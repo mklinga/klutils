@@ -2,9 +2,11 @@
   "name": "klutils",
   "version": "0.0.1",
   "description": "Utility functions made as an learning experience",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "prepublish": "npm run build",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --presets babel-preset-es2015 --out-dir dist"
   },
   "repository": {
     "type": "git",
