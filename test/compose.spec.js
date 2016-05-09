@@ -9,13 +9,16 @@ describe('compose', () => {
     compose().should.be.a.Function()
   })
 
-  it('Should compose given data through the functions', () => {
+  it('Should perform right-to-left function composition', () => {
     const _value = 1
     const doubleValue = x => x * 2
-    const tripleValue = y => y * 3
+    const squared = y => y * y
 
-    const composedFunc = compose(doubleValue, tripleValue)
-    composedFunc(_value).should.be.exactly(6)
+    const composedFunc = compose(doubleValue, squared)
+    composedFunc(_value).should.be.exactly(2)
+
+    const composedFunc2 = compose(squared, doubleValue)
+    composedFunc2(_value).should.be.exactly(4)
   })
 })
 
