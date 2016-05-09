@@ -15,6 +15,16 @@ export const pipe = (...fns) => {
 }
 
 /*
+ * propEq() returns true if current object has a property and it equals given value
+ * [see compose()]
+ */
+export const propEq = (prop, value) => {
+  return data => {
+    return data[prop] !== undefined && data[prop] === value
+  }
+}
+
+/*
  * reduce() reduces data into a single value
  */
 export const reduce = (fn, initialData) => {
