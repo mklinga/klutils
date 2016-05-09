@@ -1,8 +1,17 @@
 /*
  * compose() perfoms right-to-left composition of the functions
+ * [see pipe()]
  */
 export const compose = (...fns) => {
-  return data => reduce((v, fn) => fn(v), data)(reverse(fns))
+  return pipe(...reverse(fns))
+}
+
+/*
+ * pipe() perfoms left-to-right composition of the functions
+ * [see compose()]
+ */
+export const pipe = (...fns) => {
+  return data => reduce((v, fn) => fn(v), data)(fns)
 }
 
 /*

@@ -6,7 +6,7 @@ describe('compose', () => {
   })
 
   it('Should return a function', () => {
-    compose().should.be.a.Function()
+    compose([]).should.be.a.Function()
   })
 
   it('Should perform right-to-left function composition', () => {
