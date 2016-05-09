@@ -1,9 +1,8 @@
 {
   "name": "klutils",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "Utility functions made as an learning experience",
   "main": "./dist/index.js",
-  "prepublish": "npm run build",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha test",
     "build": "babel src --out-dir dist"
