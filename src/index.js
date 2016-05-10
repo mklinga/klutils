@@ -1,3 +1,6 @@
+
+import { getFunctionArguments } from './utils/func'
+
 /*
  * compose() perfoms right-to-left composition of the functions
  * [see pipe()]
@@ -10,10 +13,10 @@ export const compose = (...fns) => {
  * curry() curries any given function
  */
 export const curry = function (fn) {
-  const originalArguments = fn.toString().match(/\(.*?\)/)[0].replace(/[()]/gi,'').replace(/\s/gi,'').split(',');
+  const originalArguments = getFunctionArguments(fn) || []
 
   const makeCurriedFunc = function() {
-    const givenArguments = arguments
+    const givenArguments = arguments || []
     if (givenArguments.length < originalArguments.length) {
       return function(...rest) {
         return makeCurriedFunc(...givenArguments, ...rest)
