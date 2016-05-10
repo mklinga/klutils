@@ -32,6 +32,11 @@ export const curry = function (fn) {
 }
 
 /*
+ * identity() returns its argument unchanged
+ */
+export const identity = x => x
+
+/*
  * pipe() perfoms left-to-right composition of the functions
  * [see compose()]
  */
