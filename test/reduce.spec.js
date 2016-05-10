@@ -1,4 +1,4 @@
-import { reduce } from "../src/index.js"
+import { reduce } from '../src/index.js'
 
 describe('reduce', () => {
   it('Should be a function', () => {

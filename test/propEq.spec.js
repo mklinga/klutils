@@ -1,4 +1,4 @@
-import { propEq } from "../src/index.js"
+import { propEq } from '../src/index.js'
 
 describe('propEq', () => {
   it('Should be a function', () => {
@@ -10,9 +10,9 @@ describe('propEq', () => {
   })
 
   it('Should be curried', () => {
-    const a = propEq('a', 1, { a : 1 })
-    const b = propEq('a', 1)({ a : 1 })
-    const c = propEq('a')(1, { a : 1 })
+    const a = propEq('a', 1, { a: 1 })
+    const b = propEq('a', 1)({ a: 1 })
+    const c = propEq('a')(1, { a: 1 })
 
     a.should.eql(b)
     b.should.eql(c)
@@ -26,7 +26,7 @@ describe('propEq', () => {
     d: 123
   }
 
-  const test = (prop, value, expected) => 
+  const test = (prop, value, expected) =>
     propEq(prop, value, lookoutObject).should.be.exactly(expected)
 
   it('Should return false if the prop is not found', () => {

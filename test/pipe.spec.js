@@ -1,4 +1,4 @@
-import { pipe } from "../src/index.js"
+import { pipe } from '../src/index.js'
 
 describe('pipe', () => {
   it('Should be a function', () => {

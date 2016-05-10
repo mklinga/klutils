@@ -1,4 +1,4 @@
-import { reverse } from "../src/index.js"
+import { reverse } from '../src/index.js'
 
 describe('reverse', () => {
   it('Should be a function', () => {
