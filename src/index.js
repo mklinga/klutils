@@ -15,19 +15,18 @@ export const compose = (...fns) => {
 export const curry = function (fn) {
   const originalArguments = getFunctionArguments(fn) || []
 
-  const makeCurriedFunc = function() {
+  const makeCurriedFunc = function () {
     const givenArguments = arguments || []
     if (givenArguments.length < originalArguments.length) {
-      return function(...rest) {
+      return function (...rest) {
         return makeCurriedFunc(...givenArguments, ...rest)
       }
-    }
-    else { 
+    } else {
       return fn(...givenArguments)
     }
   }
 
-  return function() {
+  return function () {
     return makeCurriedFunc(...arguments)
   }
 }
@@ -44,24 +43,20 @@ export const pipe = (...fns) => {
  * propEq() returns true if current object has a property and it equals given value
  * [see compose()]
  */
-export const propEq = (prop, value) => {
-  return data => {
-    return data[prop] !== undefined && data[prop] === value
-  }
-}
+export const propEq = curry((prop, value, data) => {
+  return data[prop] !== undefined && data[prop] === value
+})
 
 /*
  * reduce() reduces data into a single value
  */
-export const reduce = (fn, initialData) => {
-  return data => {
-    let reducedData = initialData
-    for (let i = 0; i < data.length; i++) {
-      reducedData = fn(reducedData, data[i])
-    }
-    return reducedData
+export const reduce = curry((fn, initialValue, data) => {
+  let reducedValue = initialValue
+  for (let i = 0; i < data.length; i++) {
+    reducedValue = fn(reducedValue, data[i])
   }
-}
+  return reducedValue
+})
 
 /*
  * reverse() reverses array

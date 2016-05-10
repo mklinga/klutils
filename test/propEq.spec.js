@@ -9,6 +9,16 @@ describe('propEq', () => {
     propEq().should.be.a.Function()
   })
 
+  it('Should be curried', () => {
+    const a = propEq('a', 1, { a : 1 })
+    const b = propEq('a', 1)({ a : 1 })
+    const c = propEq('a')(1, { a : 1 })
+
+    a.should.eql(b)
+    b.should.eql(c)
+    c.should.eql(a)
+  })
+
   const lookoutObject = {
     a: true,
     b: false,
@@ -17,7 +27,7 @@ describe('propEq', () => {
   }
 
   const test = (prop, value, expected) => 
-    propEq(prop, value)(lookoutObject).should.be.exactly(expected)
+    propEq(prop, value, lookoutObject).should.be.exactly(expected)
 
   it('Should return false if the prop is not found', () => {
     test('ä', true, false)
