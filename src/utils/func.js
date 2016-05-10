@@ -1,4 +1,7 @@
 export const getFunctionArguments = function (fn) {
+  if (typeof fn !== 'function')
+    throw new Error('Not a function')
+
   const functionAsString =  fn.toString()
     
   const args = functionAsString
