@@ -37,6 +37,21 @@ export const curry = function (fn) {
 export const identity = x => x
 
 /*
+ * memoize() caches the result for given argument
+ */
+
+export const memoize = (fn) => {
+  const results = new Map()
+  return (...args) => {
+    const key = args.toString()
+    if (!results.get(key)) {
+      results.set(key, fn(...args))
+    }
+    return results.get(key)
+  }
+}
+
+/*
  * pipe() perfoms left-to-right composition of the functions
  * [see compose()]
  */
