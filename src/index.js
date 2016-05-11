@@ -37,7 +37,7 @@ export const curry = function (fn) {
 export const identity = x => x
 
 /*
- * memoize() caches the result for given argument
+ * memoize() caches the result for given argument(s)
  */
 
 export const memoize = (fn) => {

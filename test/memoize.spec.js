@@ -37,5 +37,15 @@ describe('memoize', () => {
     _memoized2(3, 4).should.equal(12)
     _func2.callCount.should.equal(2)
   })
+
+  it('Should handle no parameters', () => {
+    let _func0 = sinon.spy(() => 'empty')
+    let _memoized0 = memoize(_func0)
+
+    _memoized0().should.equal('empty')
+    _memoized0().should.equal('empty')
+
+    _func0.callCount.should.equal(1)
+  })
 })
 
