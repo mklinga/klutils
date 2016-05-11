@@ -52,6 +52,20 @@ export const memoize = (fn) => {
 }
 
 /*
+ * once() lets given function be called only once, subsequent calls return the first value
+ */
+
+export const once = (fn) => {
+  let returnValue
+  return (...args) => {
+    if (!returnValue) {
+      returnValue = fn(...args)
+    }
+    return returnValue
+  }
+}
+
+/*
  * pipe() perfoms left-to-right composition of the functions
  * [see compose()]
  */
