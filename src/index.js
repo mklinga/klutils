@@ -1,5 +1,17 @@
 
-import { getFunctionArguments } from './utils/func'
+import * as funcUtils from './utils/func'
+
+export const curry = funcUtils.curry
+
+/*
+ * all() returns true if all the items pass the predicate function
+ */
+
+export const all = curry((predicate, list) => {
+  return !!list.reduce && (typeof predicate === 'function') && list.reduce((result, current) => {
+    return !result ? false : !!predicate(current)
+  }, true)
+})
 
 /*
  * compose() perfoms right-to-left composition of the functions
@@ -7,28 +19,6 @@ import { getFunctionArguments } from './utils/func'
  */
 export const compose = (...fns) => {
   return pipe(...reverse(fns))
-}
-
-/*
- * curry() curries any given function
- */
-export const curry = function (fn) {
-  const originalArguments = getFunctionArguments(fn) || []
-
-  const makeCurriedFunc = function () {
-    const givenArguments = arguments || []
-    if (givenArguments.length < originalArguments.length) {
-      return function (...rest) {
-        return makeCurriedFunc(...givenArguments, ...rest)
-      }
-    } else {
-      return fn(...givenArguments)
-    }
-  }
-
-  return function () {
-    return makeCurriedFunc(...arguments)
-  }
 }
 
 /*
