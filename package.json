@@ -1,6 +1,6 @@
 {
   "name": "klutils",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "description": "Utility functions made as an learning experience",
   "main": "./dist/index.js",
   "scripts": {
